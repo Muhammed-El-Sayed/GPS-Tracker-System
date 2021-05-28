@@ -2,42 +2,26 @@
 void LCD_sendCommand(uint8 command) {
 	Dio_WriteChannel(DioConf_LCD_RS_PIN_ID_INDEX, 0);	
 	Dio_WriteChannel(DioConf_LCD_RW_PIN_ID_INDEX, 0);
-	// MARK:- this function isn't implemented 
-	delay(50);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 	Dio_WriteChannel(DioConf_LCD_E_PIN_ID_INDEX, 1);
-	// MARK:- this function isn't implemented 
-	delay(190);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 	Dio_WritePort(DioConf_PORTB_PORT_ID_INDEX ,command);
-	// MARK:- this function isn't implemented 
-	delay(100);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 	Dio_WriteChannel(DioConf_LCD_E_PIN_ID_INDEX, 0);
-	// MARK:- this function isn't implemented 
-	delay(13);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 }
 
 
 void LCD_displayCharacter(uint8 character) {
 	Dio_WriteChannel(DioConf_LCD_RS_PIN_ID_INDEX, 1);	
 	Dio_WriteChannel(DioConf_LCD_RW_PIN_ID_INDEX, 0);
-	// MARK:- this function isn't implemented 
-	delay(50);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 	Dio_WriteChannel(DioConf_LCD_E_PIN_ID_INDEX, 1);
-	// MARK:- this function isn't implemented 
-	delay(190);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 	Dio_WritePort(DioConf_PORTB_PORT_ID_INDEX ,character);
-	// MARK:- this function isn't implemented 
-	delay(100);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 	Dio_WriteChannel(DioConf_LCD_E_PIN_ID_INDEX, 0);
-	// MARK:- this function isn't implemented 
-	delay(13);  // Unit is ns
-	//
+	SysTick_Delay_ms(1);
 }
 
 
