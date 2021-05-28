@@ -1,4 +1,3 @@
-
 #ifndef GPS_H
 #define GPS_H
 
@@ -15,10 +14,10 @@
 
 
 /*Functions*/
-uint16 Return_Latitude_In_Degrees (void);
-uint16 Return_Longitude_In_Degrees (void);
-sint32 toRadians(const sint32 degree);
-sint32 calculate_Distance_between_2_Coordinates(uint16 lat1, uint16 long1,uint16 lat2,uint16 long2);
+float64 Return_Latitude_In_Degrees (void);
+float64 Return_Longitude_In_Degrees (void);
+float64 toRadians(const float64 degree);
+float64 calculate_Distance_between_2_Coordinates(float64 lat1, float64 long1,float64 lat2,float64 long2);
 
 
 #endif
