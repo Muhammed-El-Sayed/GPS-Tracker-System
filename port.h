@@ -12,11 +12,10 @@
 #define PORT_H
 
 #include "Std_Types.h"
-#include "Platform_Types.h"
 #include "Common_Macros.h"
 
 /* Number of configured Port Pins */
-#define PORT_CONFIGURED_PINS                    (11U)
+#define PORT_CONFIGURED_PINS                    (12U)
 
 /* Pin Index in the array of structures in Port_PBcfg.c */
 #define PortConf_LCD_RS_PIN_ID_INDEX        (uint8)0x00
@@ -30,6 +29,8 @@
 #define PortConf_LCD_D5_PIN_ID_INDEX        (uint8)0x08
 #define PortConf_LCD_D6_PIN_ID_INDEX        (uint8)0x09
 #define PortConf_LCD_D7_PIN_ID_INDEX        (uint8)0x0A
+#define PortConf_LED_PIN_ID_INDEX           (uint8)0x0B
+ 
 /* PORT Configured Port IDs  */
 #define PortConf_LCD_RS_PORT_NUM                0 /* PORTA */
 #define PortConf_LCD_RW_PORT_NUM                0 /* PORTA */
@@ -42,6 +43,8 @@
 #define PortConf_LCD_D5_PORT_NUM                1 /* PORTB */
 #define PortConf_LCD_D6_PORT_NUM                1 /* PORTB */
 #define PortConf_LCD_D7_PORT_NUM                1 /* PORTB */
+#define PortConf_LED_PORT_NUM                   5 /* PORTF */
+   
 /*PORT Configured Pin IDs */
 #define PortConf_LCD_RS_PIN_NUM                 0/* Pin 0 in PORTA */
 #define PortConf_LCD_RW_PIN_NUM                 1/* Pin 1 in PORTA */
@@ -54,6 +57,8 @@
 #define PortConf_LCD_D5_PIN_NUM                 5/* Pin 5 in PORTB */
 #define PortConf_LCD_D6_PIN_NUM                 6/* Pin 6 in PORTB */
 #define PortConf_LCD_D7_PIN_NUM                 7/* Pin 7 in PORTB */
+#define PortConf_LED_PIN_NUM                    1/* Pin 1 in PORTF */
+   
 /* PORT configured Pin Direction */
 #define PortConf_LCD_RS_PIN_DIRECTION          (Port_PinDirectionType)PORT_PIN_OUT/*configure Pin 0 in PORTA as an output pin */
 #define PortConf_LCD_RW_PIN_DIRECTION          (Port_PinDirectionType)PORT_PIN_OUT/*configure Pin 1 in PORTA as an output pin */
@@ -66,7 +71,8 @@
 #define PortConf_LCD_D5_PIN_DIRECTION          (Port_PinDirectionType)PORT_PIN_OUT/*configure Pin 5 in PORTB as an output pin */
 #define PortConf_LCD_D6_PIN_DIRECTION          (Port_PinDirectionType)PORT_PIN_OUT/*configure Pin 6 in PORTB as an output pin */
 #define PortConf_LCD_D7_PIN_DIRECTION          (Port_PinDirectionType)PORT_PIN_OUT/*configure Pin 7 in PORTB as an output pin */
-
+#define PortConf_LED_PIN_DIRECTION             (Port_PinDirectionType)PORT_PIN_OUT/*configure Pin 1 in PORTF as an output pin */
+   
 /*PORT configured Pin Mode */
 #define PortConf_LCD_RS_PIN_MODE                0 /*configure Pin 0 in PORTA as GPIO Pin */
 #define PortConf_LCD_RW_PIN_MODE                0 /*configure Pin 1 in PORTA as GPIO Pin */
@@ -79,6 +85,7 @@
 #define PortConf_LCD_D5_PIN_MODE                0 /*configure Pin 5 in PORTB as GPIO Pin */
 #define PortConf_LCD_D6_PIN_MODE                0 /*configure Pin 6 in PORTB as GPIO Pin */
 #define PortConf_LCD_D7_PIN_MODE                0 /*configure Pin 7 in PORTB as GPIO Pin */
+#define PortConf_LED_PIN_MODE                   0 /*configure Pin 1 in PORTF as GPIO Pin */
 
 /*PORT configured Pin internal resisitor*/
 #define PortConf_LCD_RS_PIN_INTERNAL_RESISTOR ( Port_InternalResistorType) PORT_INTERNAL_RESISTOR_OFF
@@ -92,6 +99,7 @@
 #define PortConf_LCD_D5_PIN_INTERNAL_RESISTOR ( Port_InternalResistorType) PORT_INTERNAL_RESISTOR_OFF
 #define PortConf_LCD_D6_PIN_INTERNAL_RESISTOR ( Port_InternalResistorType) PORT_INTERNAL_RESISTOR_OFF
 #define PortConf_LCD_D7_PIN_INTERNAL_RESISTOR ( Port_InternalResistorType) PORT_INTERNAL_RESISTOR_OFF
+#define PortConf_LED_PIN_INTERNAL_RESISTOR    ( Port_InternalResistorType) PORT_INTERNAL_RESISTOR_OFF
 
 /*PORT configured Pin initial value*/
 #define PortConf_LCD_RS_PIN_INITIAL_VALUE          STD_LOW
@@ -105,6 +113,7 @@
 #define PortConf_LCD_D5_PIN_INITIAL_VALUE          STD_LOW
 #define PortConf_LCD_D6_PIN_INITIAL_VALUE          STD_LOW
 #define PortConf_LCD_D7_PIN_INITIAL_VALUE          STD_LOW
+#define PortConf_LED_PIN_INITIAL_VALUE             STD_LOW
 
 /*PORT configured pin analog functionality*/
 #define PortConf_LCD_RS_PIN_DIGITAL_MODE         (boolean)TRUE
@@ -118,6 +127,7 @@
 #define PortConf_LCD_D5_PIN_DIGITAL_MODE         (boolean)TRUE
 #define PortConf_LCD_D6_PIN_DIGITAL_MODE         (boolean)TRUE
 #define PortConf_LCD_D7_PIN_DIGITAL_MODE         (boolean)TRUE
+#define PortConf_LED_PIN_DIGITAL_MODE            (boolean)TRUE
 
 
  /*******************************************************************************

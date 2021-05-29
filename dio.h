@@ -13,26 +13,28 @@
 #define DIO_H
 
 #include "Std_Types.h"
-#include "Platform_Types.h"
 #include "Common_Macros.h"
 
 /* Number of the configured Dio Channels */
-#define DIO_CONFIGURED_CHANNLES             (3U)
+#define DIO_CONFIGURED_CHANNLES             (4U)
 #define DIO_CONFIGURED_PORTS                (1U)
 /* Channel Index in the array of structures in dio.c */
 #define DioConf_LCD_RS_PIN_ID_INDEX        (uint8)0x00
 #define DioConf_LCD_RW_PIN_ID_INDEX        (uint8)0x01
 #define DioConf_LCD_E_PIN_ID_INDEX         (uint8)0x02
+#define DioConf_LED_PIN_ID_INDEX           (uint8)0x03
 /* Channel Index in the array of structures in dio.c */
 #define DioConf_PORTB_PORT_ID_INDEX        (uint8)0x00
 /* DIO Configured Port ID's  */
 #define DioConf_LCD_RS_PORT_NUM                0 /* PORTA */
 #define DioConf_LCD_RW_PORT_NUM                0 /* PORTA */
 #define DioConf_LCD_E_PORT_NUM                 0 /* PORTA */
+#define DioConf_LED_PORT_NUM                   5 /* PORTF*/
 /* DIO Configured Channel ID's */
 #define DioConf_LCD_RS_PIN_NUM                 0/* Pin 0 in PORTA */
 #define DioConf_LCD_RW_PIN_NUM                 1/* Pin 1 in PORTA */
 #define DioConf_LCD_E_PIN_NUM                  2/* Pin 2 in PORTA */
+#define DioConf_LED_PIN_NUM                    1/* Pin 1 in PORTF */
 
 /*DIO configured Port Port ID*/
 #define DioConf_PORTB_PORT_NUM                1/* PORTB */

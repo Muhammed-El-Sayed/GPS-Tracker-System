@@ -17,7 +17,8 @@ const Dio_ConfigType Dio_Configuration=
   {
          DioConf_LCD_RS_PORT_NUM,DioConf_LCD_RS_PIN_NUM,
 	 DioConf_LCD_RW_PORT_NUM,DioConf_LCD_RW_PIN_NUM,
-         DioConf_LCD_E_PORT_NUM,DioConf_LCD_E_PIN_NUM
+         DioConf_LCD_E_PORT_NUM,DioConf_LCD_E_PIN_NUM,
+         DioConf_LED_PORT_NUM,DioConf_LED_PIN_NUM
   },
   {
     DioConf_PORTB_PORT_NUM

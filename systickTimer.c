@@ -9,7 +9,7 @@
  * Author: Salma Ali
  ******************************************************************************/
 #include "SystickTimer.h"
-#include "systickTimer_Regs.h"
+#include "SystickTimer_Regs.h"
 
 
 #define SYSTICK_PRIORITY_MASK  0x1FFFFFFF
@@ -21,7 +21,6 @@
 static void (*g_SysTick_Call_Back_Ptr)(void) = NULL_PTR;
 
 /************************************************************************************
-* Service Name: SysTick_Handler
 * Description: SysTick Timer ISR
 ************************************************************************************/
 void SysTick_Handler(void)
@@ -35,14 +34,14 @@ void SysTick_Handler(void)
 }
 
 /* Call this function to start the systick timer*/
-void SysTick_Start(uint16 delay)
+void SysTick_Start(uint16 time)
 {
     SYSTICK_CTRL_REG    = 0;                         /* Disable the SysTick Timer by Clear the ENABLE Bit */
-    SYSTICK_RELOAD_REG  = 15999 * delay;         /* Set the Reload value to count n miliseconds */
+    SYSTICK_RELOAD_REG  = 15999 * time;              /* Set the Reload value to count n miliseconds */
     SYSTICK_CURRENT_REG = 0;                         /* Clear the Current Register value */
     /* Configure the SysTick Control Register 
      * Enable the SysTick Timer (ENABLE = 1)
-	 * Enable SysTick Interrupt (INTEN = 1)
+     * Enable SysTick Interrupt (INTEN = 1)
      * Choose the clock source to be System Clock (CLK_SRC = 1) */
     SYSTICK_CTRL_REG   |= 0x07;
     /* Assign priority level 3 to the SysTick Interrupt */
@@ -60,4 +59,18 @@ void SysTick_Stop(void)
 void SysTick_SetCallBack(void(*Ptr2Func)(void))
 {
     g_SysTick_Call_Back_Ptr = Ptr2Func;
+}
+
+
+/*call this function to wait for "delay" in milliseconds */
+void SysTick_Delay_ms(uint16 delay)
+{
+    SYSTICK_CTRL_REG    = 0;                         /* Disable the SysTick Timer by Clear the ENABLE Bit */
+    SYSTICK_RELOAD_REG  = 15999 * delay;         /* Set the Reload value to count n miliseconds */
+    SYSTICK_CURRENT_REG = 0;                         /* Clear the Current Register value */
+    /* Configure the SysTick Control Register 
+     * Enable the SysTick Timer (ENABLE = 1)
+     * Choose the clock source to be System Clock (CLK_SRC = 1) */
+    SYSTICK_CTRL_REG   |= 0x05;
+    while((SYSTICK_CTRL_REG & 0x00010000) == 0); /* wait for the systictimer to finish count and raise the count flag*/
 }

@@ -22,6 +22,6 @@ Systick Timer Registers
 /*****************************************************************************
 NVIC Registers
 *****************************************************************************/
-#define NVIC_PRI3_REG             (*((volatile unsigned long *)0xE000E40C))
+#define NVIC_SYSTEM_PRI3_REG      (*((volatile unsigned long *)0xE000ED20))
 
 #endif

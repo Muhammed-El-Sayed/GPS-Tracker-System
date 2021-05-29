@@ -43,7 +43,11 @@
                                             PortConf_LCD_D6_PIN_INTERNAL_RESISTOR,PortConf_LCD_D6_PIN_INITIAL_VALUE,PortConf_LCD_D6_PIN_DIGITAL_MODE,
 
                                             PortConf_LCD_D7_PORT_NUM,PortConf_LCD_D7_PIN_NUM,PortConf_LCD_D7_PIN_DIRECTION,PortConf_LCD_D7_PIN_MODE,
-                                            PortConf_LCD_D7_PIN_INTERNAL_RESISTOR,PortConf_LCD_D7_PIN_INITIAL_VALUE,PortConf_LCD_D7_PIN_DIGITAL_MODE
+                                            PortConf_LCD_D7_PIN_INTERNAL_RESISTOR,PortConf_LCD_D7_PIN_INITIAL_VALUE,PortConf_LCD_D7_PIN_DIGITAL_MODE,
+                                              
+                                            PortConf_LED_PORT_NUM,PortConf_LED_PIN_NUM,PortConf_LED_PIN_DIRECTION,PortConf_LED_PIN_MODE,
+                                            PortConf_LED_PIN_INTERNAL_RESISTOR,PortConf_LED_PIN_INITIAL_VALUE,PortConf_LED_PIN_DIGITAL_MODE
+
 
 
 };

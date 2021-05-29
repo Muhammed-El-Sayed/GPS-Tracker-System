@@ -1,17 +1,28 @@
+/******************************************************************************
+ *
+ * Module: Led
+ *
+ * File Name: Led.h
+ *
+ * Description: Header file for Led Module.
+ *
+ ******************************************************************************/
 #ifndef LED_H
 #define LED_H
 
-
-#include "Common_Macros.h"
 #include "Std_Types.h"
-#include "tm4c123gh6pm_registers.h"
+#include "dio.h"
+
+/* Set the led ON/OFF according to its configuration Positive logic or negative logic */
+#define LED_ON  STD_HIGH
+#define LED_OFF STD_LOW
 
 
-#define PORTF_NUM (5U)
-#define PF1       (1U)
+/* Description: Set the LED state to ON */
+void LED_setOn(void);
+
+/* Description: Set the LED state to OFF */
+void LED_setOff(void);
 
 
-/*Functions*/
-void Led_Red_Init(void);
-
-#endif
+#endif /* LED_H */
