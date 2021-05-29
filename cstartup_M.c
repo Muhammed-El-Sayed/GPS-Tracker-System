@@ -23,10 +23,8 @@ extern void SVC_Handler( void );
 extern void DebugMon_Handler( void );
 extern void PendSV_Handler( void );
 extern void SysTick_Handler( void );
-extern void Timer0A_ISR(void);
-extern void Timer0B_ISR(void);
-extern void Wide_Timer0A_ISR(void);
-extern void Wide_Timer0B_ISR(void);
+extern void UART_2_RX_ISR(void);
+
 
 typedef void( *intfunc )( void );
 typedef union { intfunc __fun; void * __ptr; } intvec_elem;
@@ -80,8 +78,8 @@ const intvec_elem __vector_table[] =
   0,
   0,
   0,
-  Timer0A_ISR, //35
-  Timer0B_ISR, //36
+  0, 
+  0, 
   0,
   0,
   0,
@@ -94,6 +92,7 @@ const intvec_elem __vector_table[] =
   0,
   0,
   0,
+  UART_2_RX_ISR, //49
   0,
   0,
   0,
@@ -154,9 +153,8 @@ const intvec_elem __vector_table[] =
   0,
   0,
   0,
-  0,
-  Wide_Timer0A_ISR, //110
-  Wide_Timer0B_ISR, //111
+  0, 
+  0, 
   
   
 
