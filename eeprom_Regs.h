@@ -16,7 +16,7 @@
 #define RO 0
 /*Two block types: 16 word/block or 1 word/block */
 /*this register indicates the number of 16-word blocks and 32-bit words in the EEPROM.*/
-#define EEPROM_SIZE_INFORMATION                      (*((volatile unsigned long *)0x400FE00))
+#define EEPROM_SIZE_INFORMATION                      (*((volatile unsigned long *)0x400AF000))
 
 /*The EEBLOCK register is used to select the EEPROM block for subsequent reads, writes and protection control*/
 #define EEPROM_CURRENT_BLOCK_REGISTER                (*((volatile unsigned long *)0x400AF004))

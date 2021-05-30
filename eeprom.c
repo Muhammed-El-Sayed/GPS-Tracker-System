@@ -52,18 +52,19 @@ void EEPROM_read(uint32* saveLocation, uint32 startAddress, uint32 count)
    	// Get count in words
    	count /= 4;
 
-   	// Set start reading address, each address containes one word
+    // Start Address is byte number and need to get block that contain this byte and word offset
    	// Read address consists of block address + word offset 
    	EEPROM_CURRENT_BLOCK_REGISTER = EEPROM_BLOCK_FROM_ADDRESS(startAddress);
    	EEPROM_CURRENT_OFFSET_REGISTER = EEPROM_OFFSET_FROM_ADDRESS(startAddress);
 
    	// Read one word per itiration 
+    // now count is number of words not bytes
    	while (count) 
    	{
-   		// Get the data of the current address in EEPROM and increment the address to the next read
+   		// Get the data of the current address in EEPROM(value pointed by offset reg) and increment the address(offset reg) to the next read
    		*saveLocation = EPRROM_READ_WRITE_WITH_INCREMENT_REGISTER;
    		// Increase the save location to the next place.
-   		saveLocation++;
+   		saveLocation++;//cause its pointer to 32 bit (1 word)
    		count--;
    		// Increase block if the offset reaches maximum (word number 15 in the 16 word block)
    		// Note: the EEPROM_CURRENT_OFFSET_REGISTER is automatically reset to zero after reaching 15
