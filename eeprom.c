@@ -1,15 +1,16 @@
 /******************************************************************************
  *
- * Module: TivaC internal EEPROM
+ * Module: eeprom
  *
  * File Name: eeprom.c
  *
- * Description: Source file for the internal EEPROM Memory
+ * Description: Source file for TM4C123GH6PM Microcontroller- internal EEPROM Driver
  *
  *
  *******************************************************************************/
 #include "eeprom.h"
 #include "eeprom_Regs.h"
+#include "SystickTimer.h"
 
 boolean EEPROM_init(void)
 {
@@ -27,22 +28,24 @@ boolean EEPROM_init(void)
 }
 
 // Returns size of EEPROM in bytes.
-uint32 EEPROM_getSize(void) {
-	return (SIZE_OF_EEPROM_IN_WORDS_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
+uint32 EEPROM_getSize(void) 
+{
+	return (SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
 }
 
 // Reads "ui32Count" bytes from address "ui32Address" and save it at location "pui32Data"
 // Note: Memory is word addressing, but the user should send the address of byte, so it should be multible of 4 (word alligned)
-void EEPROM_read(uint32_t* saveLocation, uint32_t startAddress, uint32_t count)
+/*startAddress: not an address "offset" multiple of 4,count: no.of bytes*/
+void EEPROM_read(uint32* saveLocation, uint32 startAddress, uint32 count)
 {
 	// Ensures that the address is > 0  --> Not sure why
   	assert(saveLocation);
   	// Ensures that the start reading addresss is in available EEPROM address space
-  	assert(startAddress < SIZE_OF_EEPROM_IN_WORDS_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
+  	assert(startAddress < SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
   	// Ensures that the last address is in available EEPROM address space
-  	assert((startAddress + count) <= SIZE_OF_EEPROM_IN_WORDS_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
+  	assert((startAddress + count) <= SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
     // Ensures that the assress is word alligned 
-	assert((address & 3) == 0);
+	assert((startAddress & 3) == 0);
 	// Ensures that the count is word alligned 
    	assert((count & 3) == 0);
 
@@ -51,8 +54,8 @@ void EEPROM_read(uint32_t* saveLocation, uint32_t startAddress, uint32_t count)
 
    	// Set start reading address, each address containes one word
    	// Read address consists of block address + word offset 
-   	EEPROM_CURRENT_BLOCK_REGISTER = EEPROM_BLOCK_FROM_ADDRESS(address);
-   	EEPROM_CURRENT_OFFSET_REGISTER = EEPROM_OFFSET_FROM_ADDRESS(address);
+   	EEPROM_CURRENT_BLOCK_REGISTER = EEPROM_BLOCK_FROM_ADDRESS(startAddress);
+   	EEPROM_CURRENT_OFFSET_REGISTER = EEPROM_OFFSET_FROM_ADDRESS(startAddress);
 
    	// Read one word per itiration 
    	while (count) 
@@ -72,23 +75,24 @@ void EEPROM_read(uint32_t* saveLocation, uint32_t startAddress, uint32_t count)
 }
 
 
-void EEPROM_write(uint32_t* writeLocation, uint32_t startAddress, uint32_t count) 
+void EEPROM_write(uint32* writeLocation, uint32 startAddress, uint32 count) 
 {
 	// Ensures that the address is > 0  --> Not sure why
   	assert(writeLocation);
   	// Ensures that the start reading addresss is in available EEPROM address space
-  	assert(startAddress < SIZE_OF_EEPROM_IN_WORDS_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
+  	assert(startAddress < SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
   	// Ensures that the last address is in available EEPROM address space
-  	assert((startAddress + count) <= SIZE_OF_EEPROM_IN_WORDS_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
+  	assert((startAddress + count) <= SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
     // Ensures that the assress is word alligned 
-	assert((address & 3) == 0);
+	assert((startAddress & 3) == 0);
 	// Ensures that the count is word alligned 
    	assert((count & 3) == 0);
 
    	// Busy waiting till EEPROM finishes it's current operation.
+        uint32 writeStatus;
    	do 
    	{
-   		uint32 writeStatus = EEPROM_DONE_STATUS_REGISTER;
+   		writeStatus = EEPROM_DONE_STATUS_REGISTER;
    	}
    	while (writeStatus & WORKING_BIT);
 
@@ -98,8 +102,8 @@ void EEPROM_write(uint32_t* writeLocation, uint32_t startAddress, uint32_t count
 
    	// Set start writing address, each address containes one word
    	// Write address consists of block address + word offset 
-   	EEPROM_CURRENT_BLOCK_REGISTER = EEPROM_BLOCK_FROM_ADDRESS(address);
-   	EEPROM_CURRENT_OFFSET_REGISTER = EEPROM_OFFSET_FROM_ADDRESS(address);
+   	EEPROM_CURRENT_BLOCK_REGISTER = EEPROM_BLOCK_FROM_ADDRESS(startAddress);
+   	EEPROM_CURRENT_OFFSET_REGISTER = EEPROM_OFFSET_FROM_ADDRESS(startAddress);
 
    	while (count) 
    	{
@@ -111,7 +115,7 @@ void EEPROM_write(uint32_t* writeLocation, uint32_t startAddress, uint32_t count
    		// Busy waiting till writing ends
    		do 
    		{
-   			uint32 writeStatus = EEPROM_DONE_STATUS_REGISTER;
+   		    writeStatus = EEPROM_DONE_STATUS_REGISTER;
    		}
    		while (writeStatus & WORKING_BIT);
    		// Increase the write location to the next place.
@@ -125,3 +129,4 @@ void EEPROM_write(uint32_t* writeLocation, uint32_t startAddress, uint32_t count
    		}
    	}
 }
+

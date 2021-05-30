@@ -1,3 +1,13 @@
+ /******************************************************************************
+ *
+ * Module: eeprom
+ *
+ * File Name: eeprom_Regs.h
+ *
+ * Description: Header file for TM4C123GH6PM Microcontroller - eeprom driver Registers
+ *
+ ******************************************************************************/
+
 #ifndef EEPEROM_REGS_H
 #define EEPEROM_REGS_H
 
