@@ -13,6 +13,7 @@
 #include "Std_Types.h"
 #include "SystickTimer.h"
 #include "dio.h"
+#include "stdio.h"
 
 /*******************************************************************************
  *                      Preprocessor Macros                                    *
@@ -33,5 +34,6 @@ void LCD_clearScreen(void);
 void LCD_integerToString(int data);
 void LCD_doubleToString(float64 data);
 void LCD_displayCharacter(uint8 character);
+void LCD_init(void);
 
 #endif

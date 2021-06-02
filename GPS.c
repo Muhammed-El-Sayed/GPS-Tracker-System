@@ -150,7 +150,10 @@ float64 calculate_Distance_between_2_Coordinates(float64 lat1, float64 long1,flo
     }
     if(counter == 2)
     {
-      if(buffer[i+1] != ',')
+      if(buffer[i+1] == ' ')
+      {
+      }
+      else if(buffer[i+1] != ',')
       {
         lat[l] = buffer[i+1]; //Degrees Minutes
         ++l;
@@ -176,7 +179,11 @@ void Update_Longitude_In_String (uint8 * buffer)
     }
     if(counter == 4)
     {
-      if(buffer[i+1] != ',')
+      
+      if(buffer[i+1] == ' ')
+      {
+      }
+      else if(buffer[i+1] != ',')
       {
         lon[l] = buffer[i+1]; //Degrees Minutes
         ++l;

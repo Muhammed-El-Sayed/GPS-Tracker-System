@@ -37,26 +37,32 @@ void Latitude_Longitude_String_Recieved (void) //fills buffer by the recieved GP
   
 }
 
-void led_on(void)
+void led_on_recieve(void)
 {
-     uint8 data_Recieved_Character =0;
-     data_Recieved_Character = *(volatile uint32 *)((volatile uint8 *)UART2_BASE_ADDRESS + UARTDR_OFFSET);
-     
-    if(data_Recieved_Character == 'A')
-       GPIO_PORTF_DATA_REG  |= 1<<1;
+      uint8 data_Recieved_Character =0;
+    data_Recieved_Character = *(volatile uint32 *)((volatile uint8 *)UART2_BASE_ADDRESS + UARTDR_OFFSET);
+    
+    if( data_Recieved_Character =='A')
+      LED_setOn();
+      
 }
+
 
 
 int main()
 {  
+  
+   //   Application Code
   Port_Init(&Port_Configuration);
   Dio_Init(&Dio_Configuration);
   LCD_init();
-   //   Application Code
+  
+  
+  
     UART_Config Configuration ={UART_2_RX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
     UART_Init(&Configuration);
     Enable_UART_2_RX_INTERRUPT();
-    Led_Red_Init();
+    
   
     UART_2_RX_setCallBack(Latitude_Longitude_String_Recieved);
     
@@ -64,8 +70,10 @@ int main()
     uint8 flag =0;
     float64 lat1,lon1;
       
+    
     while(1)
     {
+      
       if(stringRecieved == 1) //GPGGA data is recieved
       {
         Disable_Interrupts();
@@ -83,19 +91,21 @@ int main()
         float64 lon_In_Degrees = Return_Latitude_or_Langitude_In_Degrees (lon);
         
         //Display lat: 128.54 N  -->lat_In_Degrees lat_Dir
-        LCD_displayString("latt.:");
+        LCD_clearScreen();
+       // LCD_displayString("latt.:");
         LCD_doubleToString(lat_In_Degrees);
          LCD_displayCharacter(' ');
          LCD_displayCharacter(lat_Dir);
-           LCD_goToRowColoumn(1,0);
+         LCD_displayCharacter(',');
+         
         //Display lon: 33.36  W  -->lon_In_Degrees lon_Dir
            
-           LCD_displayString("long.:");
+          // LCD_displayString("long.:");
              LCD_doubleToString(lon_In_Degrees);
              LCD_displayCharacter(' ');
              LCD_displayCharacter(lon_Dir);
-             LCD_clearScreen();
               LCD_goToRowColoumn(0,0);
+            
                
          
         
@@ -118,25 +128,36 @@ int main()
          lon1=lon_In_Degrees;
          
          //Display Distance
-         
-         if(Distance >=100)
+         LCD_goToRowColoumn(1,0);
+         LCD_displayString("Dis.: ");
+  
+       LCD_doubleToString(Distance);
+         if(Distance >=0.1)
          {
            //Turn led on Using PORT & DIO
+           LED_setOn();
          }
-        
-        Enable_Interrupts();
+          SysTick_Delay_ms(250);
+         Enable_Interrupts();
       }
         
     }
+
+   
+  
+  
+  
+  
+  
+  
  
   /*
    
   
-    UART_Config Configuration ={UART_2_RX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
-    UART_Init(&Configuration);
+    UART_Config Configuration2 ={UART_2_RX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
+    UART_Init(&Configuration2);
     Enable_UART_2_RX_INTERRUPT();
-    Led_Red_Init();
-    UART_2_RX_setCallBack(led_on);
+    UART_2_RX_setCallBack(led_on_recieve);
    
     
     
@@ -149,8 +170,14 @@ int main()
       
     }
   
+  
+*/
+  
+       /*
+     UART_Config Configuration ={UART_1_TX_PB1,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
+    UART_Init(&Configuration);
+    uint8 Data[]={"12.34,62.55 "};
+    UART_sendString(Data,UART_1_TX_PB1);
   */
-  
-  
   
 }

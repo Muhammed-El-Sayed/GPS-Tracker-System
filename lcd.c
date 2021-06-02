@@ -85,8 +85,8 @@ void LCD_clearScreen(void)
 
 void LCD_integerToString(int number)
 {
-   char str[16];    /*create an empty string to store number*/
-   sprintf(str,"%i", number);   /*make the number into string using sprintf function*/
+   uint8 str[16];    /*create an empty string to store number*/
+   sprintf((char*)str,"%i", number);   /*make the number into string using sprintf function*/
    LCD_displayString(str);
 
 }
@@ -99,6 +99,8 @@ void LCD_doubleToString(float64 number)
 	LCD_displayCharacter('.');
 	float64 fraction = number - x;
 	x = (sint16) (fraction * 100);
+        if(x < 10)
+          LCD_displayCharacter('0');
 	LCD_integerToString(x);
 }
 
