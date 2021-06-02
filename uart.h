@@ -1,4 +1,3 @@
-
 #ifndef UART_H
 #define UART_H
 
@@ -112,6 +111,10 @@ void UART_sendString(const uint8 *Str, uint16 UART_Mode);
 void UART_receiveString(uint8 *Str , uint16 UART_Mode);
 void UART_2_RX_setCallBack(void(*a_ptr)(void));
 void Enable_UART_2_RX_INTERRUPT(void);
+void UART_0_RX_setCallBack(void(*a_ptr)(void));
+void Enable_UART_0_RX_INTERRUPT(void);
+void UART_receiveLat(uint8 *Str , uint16 UART_Mode);
+void UART_receiveLon(uint8 *Str , uint16 UART_Mode);
 
 /*Enable / disable Interrupts*/
 #define Enable_Interrupts()    __asm("CPSIE I")
