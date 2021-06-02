@@ -5,20 +5,31 @@
 //  Created by Mohamed Khalid on 02/06/2021.
 //
 
-import Cocoa
+import UIKit
+import CoreData
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-    
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        return true
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    // MARK: UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
     // MARK: - Core Data stack
@@ -32,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         */
         let container = NSPersistentContainer(name: "GPS_tracker_app")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error {
+            if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                  
@@ -44,78 +55,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                fatalError("Unresolved error \(error)")
+                fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
     }()
 
-    // MARK: - Core Data Saving and Undo support
+    // MARK: - Core Data Saving support
 
-    @IBAction func saveAction(_ sender: AnyObject?) {
-        // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
+    func saveContext () {
         let context = persistentContainer.viewContext
-
-        if !context.commitEditing() {
-            NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
-        }
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
-                // Customize this code block to include application-specific recovery steps.
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
-                NSApplication.shared.presentError(nserror)
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-
-    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? {
-        // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
-        return persistentContainer.viewContext.undoManager
-    }
-
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-        // Save changes in the application's managed object context before the application terminates.
-        let context = persistentContainer.viewContext
-        
-        if !context.commitEditing() {
-            NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing to terminate")
-            return .terminateCancel
-        }
-        
-        if !context.hasChanges {
-            return .terminateNow
-        }
-        
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-
-            // Customize this code block to include application-specific recovery steps.
-            let result = sender.presentError(nserror)
-            if (result) {
-                return .terminateCancel
-            }
-            
-            let question = NSLocalizedString("Could not save changes while quitting. Quit anyway?", comment: "Quit without saves error question message")
-            let info = NSLocalizedString("Quitting now will lose any changes you have made since the last successful save", comment: "Quit without saves error question info");
-            let quitButton = NSLocalizedString("Quit anyway", comment: "Quit anyway button title")
-            let cancelButton = NSLocalizedString("Cancel", comment: "Cancel button title")
-            let alert = NSAlert()
-            alert.messageText = question
-            alert.informativeText = info
-            alert.addButton(withTitle: quitButton)
-            alert.addButton(withTitle: cancelButton)
-            
-            let answer = alert.runModal()
-            if answer == .alertSecondButtonReturn {
-                return .terminateCancel
-            }
-        }
-        // If we got here, it is time to quit.
-        return .terminateNow
     }
 
 }
