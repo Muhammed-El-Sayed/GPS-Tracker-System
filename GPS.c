@@ -40,6 +40,7 @@ uint8 Return_Longitude_Direction(uint8 * buffer)
           return '!'; //# is returned when Dir. is not found
 }
 
+/*
  float64 Return_Latitude_In_Degrees (uint8 * buffer) //returns latitude in degrees (including converting minutes to degrees) & fill lat[] array with degrees & minutes
 {
   uint8 counter=0,l=0;
@@ -105,6 +106,7 @@ float64 Return_Longitude_In_Degrees (uint8 * buffer) //returns longitude in degr
 
   return longitude_in_degrees;
 }
+*/
 
 float64 toRadians(const float64 degree)
 {
@@ -136,3 +138,104 @@ float64 calculate_Distance_between_2_Coordinates(float64 lat1, float64 long1,flo
 
 	return ans;
 }
+
+ void Update_Latitude_In_String (uint8 * buffer)
+{
+  uint8 counter=0,l=0;
+  for(uint8 i=0;i<100;++i)
+  {
+    if(buffer[i]==',')
+    {
+      counter++;
+    }
+    if(counter == 2)
+    {
+      if(buffer[i+1] != ',')
+      {
+        lat[l] = buffer[i+1]; //Degrees Minutes
+        ++l;
+      }
+      else
+        break;
+
+    }
+
+  }
+
+}
+
+void Update_Longitude_In_String (uint8 * buffer) 
+{
+  uint8 counter=0,l=0;
+
+  for(uint8 i=0;i<100;++i)
+  {
+    if(buffer[i]==',')
+    {
+      counter++;
+    }
+    if(counter == 4)
+    {
+      if(buffer[i+1] != ',')
+      {
+        lon[l] = buffer[i+1]; //Degrees Minutes
+        ++l;
+      }
+      else
+        break;
+
+    }
+
+  }
+
+}
+
+float64 Return_Latitude_or_Langitude_In_Degrees (uint8 * Lat_or_Long_String)//Latitude or Longitude String DDDMM.MMMMM
+{
+  
+
+	uint8 counter = 0;
+	while(Lat_or_Long_String[counter] != '.')
+	{
+		counter++;
+
+	}
+
+   //Latitude
+	float64 latitude_in_degrees =0;
+  if(counter == 4) //2 numbers for degrees & 2 numbers for minutes
+  latitude_in_degrees = (float64)((( (Lat_or_Long_String[0]-'0')*10)+((Lat_or_Long_String[1]-'0')))+ (((Lat_or_Long_String[2]-'0')*10) +((Lat_or_Long_String[3]-'0')))/60.0);
+
+  if(counter == 5) //3 numbers for degrees & 2 numbers for minutes
+  latitude_in_degrees = (float64)((((Lat_or_Long_String[0]-'0')*100)+((Lat_or_Long_String[1]-'0')*10)+ ((Lat_or_Long_String[2]-'0')))+ (((Lat_or_Long_String[3]-'0')*10) +((Lat_or_Long_String[4]-'0')))/60.0);
+
+  uint8 counter2 =counter;
+
+
+	while(Lat_or_Long_String[counter2] != '\0')
+	{
+		counter2++;
+
+	}
+
+
+	uint8 After_Decimal_Size = counter2-counter -1;
+	float64 Min_After_Decimal=0;
+
+        for(uint8 i=(counter+1),j=0; j< (counter2-counter-1);++j,++i)
+        {
+        	   After_Decimal_Size  = After_Decimal_Size -1;
+        	   Min_After_Decimal+= (Lat_or_Long_String[i]-'0')*(pow(10,After_Decimal_Size));
+
+        }
+
+        Min_After_Decimal/=pow(10,counter2-counter-1);
+	    Min_After_Decimal/=60.0;
+
+
+        latitude_in_degrees+=Min_After_Decimal;
+
+        return latitude_in_degrees;
+
+}
+
