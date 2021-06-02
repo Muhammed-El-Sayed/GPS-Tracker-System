@@ -40,13 +40,13 @@ void LCD_displayCharacter(uint8 character)
 {
 	Dio_WriteChannel(DioConf_LCD_RS_PIN_ID_INDEX, 1);/* Data Mode RS=1 */	
 	Dio_WriteChannel(DioConf_LCD_RW_PIN_ID_INDEX, 0);/* write data to LCD so RW=0 */
-	//SysTick_Delay_ms(1);/* delay for processing Tas = 50ns */
+	SysTick_Delay_ms(1);/* delay for processing Tas = 50ns */
 	Dio_WriteChannel(DioConf_LCD_E_PIN_ID_INDEX, 1);/* Enable LCD E=1 */
-	//SysTick_Delay_ms(1);/* delay for processing Tpw - Tdws = 190ns */
+	SysTick_Delay_ms(1);/* delay for processing Tpw - Tdws = 190ns */
 	Dio_WritePort(DioConf_PORTB_PORT_ID_INDEX ,character);/* out the required command to the data bus D0 --> D7 */
-	//SysTick_Delay_ms(1);/* delay for processing Tdsw = 100ns */
+	SysTick_Delay_ms(1);/* delay for processing Tdsw = 100ns */
 	Dio_WriteChannel(DioConf_LCD_E_PIN_ID_INDEX, 0);/* disable LCD E=0 */
-	//SysTick_Delay_ms(1);/* delay for processing Th = 13ns */
+	SysTick_Delay_ms(1);/* delay for processing Th = 13ns */
 }
 
 
@@ -93,14 +93,12 @@ void LCD_integerToString(int number)
 
 void LCD_doubleToString(float64 number) 
 {
-   char str[16];    /*create an empty string to store number*/
-   sprintf(str,"%f", number);   /*make the number into string using sprintf function*/
-   LCD_displayString(str);
-	/*sint16 x = (sint16)data;
+ 
+	sint16 x = (sint16)number;
 	LCD_integerToString(x);
 	LCD_displayCharacter('.');
-	float64 fraction = data - x;
+	float64 fraction = number - x;
 	x = (sint16) (fraction * 100);
-	LCD_integerToString(x);*/
+	LCD_integerToString(x);
 }
 

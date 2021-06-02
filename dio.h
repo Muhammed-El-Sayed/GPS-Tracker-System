@@ -31,9 +31,9 @@
 #define DioConf_LCD_E_PORT_NUM                 0 /* PORTA */
 #define DioConf_LED_PORT_NUM                   5 /* PORTF*/
 /* DIO Configured Channel ID's */
-#define DioConf_LCD_RS_PIN_NUM                 0/* Pin 0 in PORTA */
-#define DioConf_LCD_RW_PIN_NUM                 1/* Pin 1 in PORTA */
-#define DioConf_LCD_E_PIN_NUM                  2/* Pin 2 in PORTA */
+#define DioConf_LCD_RS_PIN_NUM                 2/* Pin 0 in PORTA */
+#define DioConf_LCD_RW_PIN_NUM                 3/* Pin 1 in PORTA */
+#define DioConf_LCD_E_PIN_NUM                  4/* Pin 2 in PORTA */
 #define DioConf_LED_PIN_NUM                    1/* Pin 1 in PORTF */
 
 /*DIO configured Port Port ID*/

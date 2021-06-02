@@ -46,9 +46,9 @@
 #define PortConf_LED_PORT_NUM                   5 /* PORTF */
    
 /*PORT Configured Pin IDs */
-#define PortConf_LCD_RS_PIN_NUM                 0/* Pin 0 in PORTA */
-#define PortConf_LCD_RW_PIN_NUM                 1/* Pin 1 in PORTA */
-#define PortConf_LCD_E_PIN_NUM                  2/* Pin 2 in PORTA */
+#define PortConf_LCD_RS_PIN_NUM                 2/* Pin 0 in PORTA */
+#define PortConf_LCD_RW_PIN_NUM                 3/* Pin 1 in PORTA */
+#define PortConf_LCD_E_PIN_NUM                  4/* Pin 2 in PORTA */
 #define PortConf_LCD_D0_PIN_NUM                 0/* Pin 0 in PORTB */
 #define PortConf_LCD_D1_PIN_NUM                 1/* Pin 1 in PORTB */
 #define PortConf_LCD_D2_PIN_NUM                 2/* Pin 2 in PORTB */
