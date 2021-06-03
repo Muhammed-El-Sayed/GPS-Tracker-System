@@ -12,31 +12,39 @@
 #include "eeprom_Regs.h"
 #include "SystickTimer.h"
 
-boolean EEPROM_init(void)
+boolean EEPROM_Init(void)
 {
-	SET_BIT(EEPROM_RUN_MODE_GATING_CONTROL_REGISTER, RO);
+     //  EEPROM_DONE_STATUS_REGISTER = 0x0;
+	SET_BIT(EEPROM_RUN_MODE_GATING_CONTROL_REGISTER, R0_BIT);
 	SysTick_Delay_ms(1);
 	while (BIT_IS_SET(EEPROM_DONE_STATUS_REGISTER, WORKING_BIT));
-	if (BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, PRETRY) | BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, ERETRY))
+        	//SysTick_Delay_ms(1);
+
+	if (BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, PRETRY_BIT) | BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, ERETRY_BIT))
 		return FALSE;
-	SET_BIT(EEPROM_SOFTWARE_RESET_REGISTER, RO);
+	CLEAR_BIT(EEPROM_SOFTWARE_RESET_REGISTER, R0_BIT);
 	SysTick_Delay_ms(1);
 	while (BIT_IS_SET(EEPROM_DONE_STATUS_REGISTER, WORKING_BIT));
-	if (BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, PRETRY) | BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, ERETRY))
+        	//SysTick_Delay_ms(1);
+
+	if (BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, PRETRY_BIT) | BIT_IS_SET(EEPROM_SUPPORT_CONTROL_STATUS_REGISTER, ERETRY_BIT))
 		return FALSE;
 	return TRUE;
 }
 
-// Returns size of EEPROM in bytes.
+/*Returns the size of EEPROM in bytes.*/
 uint32 EEPROM_getSize(void) 
 {
 	return (SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
 }
 
-// Reads "ui32Count" bytes from address "ui32Address" and save it at location "pui32Data"
-// Note: Memory is word addressing, but the user should send the address of byte, so it should be multible of 4 (word alligned)
-/*startAddress: not an address "offset" multiple of 4,count: no.of bytes*/
-void EEPROM_read(uint32* saveLocation, uint32 startAddress, uint32 count)
+/* 
+* Reads "Count" bytes from  "startAddress" word offset and saves the data starting from location "saveLocation" 
+* Note: Memory is word addressing, but the user should send the address of byte, so it should be multible of 4 (word alligned)
+* startAddress: not an actual address, it's an "offset" multiple of 4
+* count: no.of bytes
+*/
+void EEPROM_read( uint32* saveLocation, uint32 startAddress, uint32 count)
 {
 	// Ensures that the address is > 0  --> Not sure why
   	assert(saveLocation);
@@ -44,7 +52,7 @@ void EEPROM_read(uint32* saveLocation, uint32 startAddress, uint32 count)
   	assert(startAddress < SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
   	// Ensures that the last address is in available EEPROM address space
   	assert((startAddress + count) <= SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
-    // Ensures that the assress is word alligned 
+       // Ensures that the assress is word alligned 
 	assert((startAddress & 3) == 0);
 	// Ensures that the count is word alligned 
    	assert((count & 3) == 0);
@@ -52,19 +60,18 @@ void EEPROM_read(uint32* saveLocation, uint32 startAddress, uint32 count)
    	// Get count in words
    	count /= 4;
 
-    // Start Address is byte number and need to get block that contain this byte and word offset
+   	// Set start reading address, each address containes one word
    	// Read address consists of block address + word offset 
    	EEPROM_CURRENT_BLOCK_REGISTER = EEPROM_BLOCK_FROM_ADDRESS(startAddress);
    	EEPROM_CURRENT_OFFSET_REGISTER = EEPROM_OFFSET_FROM_ADDRESS(startAddress);
 
    	// Read one word per itiration 
-    // now count is number of words not bytes
    	while (count) 
    	{
-   		// Get the data of the current address in EEPROM(value pointed by offset reg) and increment the address(offset reg) to the next read
+   		// Get the data of the current address in EEPROM and increment the address to the next read
    		*saveLocation = EPRROM_READ_WRITE_WITH_INCREMENT_REGISTER;
    		// Increase the save location to the next place.
-   		saveLocation++;//cause its pointer to 32 bit (1 word)
+   		saveLocation++;
    		count--;
    		// Increase block if the offset reaches maximum (word number 15 in the 16 word block)
    		// Note: the EEPROM_CURRENT_OFFSET_REGISTER is automatically reset to zero after reaching 15
@@ -76,7 +83,7 @@ void EEPROM_read(uint32* saveLocation, uint32 startAddress, uint32 count)
 }
 
 
-void EEPROM_write(uint32* writeLocation, uint32 startAddress, uint32 count) 
+void EEPROM_write( uint32* writeLocation, uint32 startAddress, uint32 count) 
 {
 	// Ensures that the address is > 0  --> Not sure why
   	assert(writeLocation);
@@ -84,7 +91,7 @@ void EEPROM_write(uint32* writeLocation, uint32 startAddress, uint32 count)
   	assert(startAddress < SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
   	// Ensures that the last address is in available EEPROM address space
   	assert((startAddress + count) <= SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
-    // Ensures that the assress is word alligned 
+        //Ensures that the assress is word alligned 
 	assert((startAddress & 3) == 0);
 	// Ensures that the count is word alligned 
    	assert((count & 3) == 0);
@@ -130,4 +137,51 @@ void EEPROM_write(uint32* writeLocation, uint32 startAddress, uint32 count)
    		}
    	}
 }
+uint32 EEPROM_writeBytes(uint8* str)
+{
+    REG num;
+    char* ptr = &num.character_8_bit.d;
+    int character_count = 0;
+    int word_count = 0;
+    boolean flag = FALSE;
+   
+    
+   while (str[character_count]!='\0')
+    {
+           *ptr = str[character_count];
+           ptr--;
+           if (flag == TRUE)
+           {
+               flag = FALSE;
+              EEPROM_write(&num.word_32_bit,word_count*4,4);
+               ptr = &num.character_8_bit.d;
+               word_count++;
+           }
+           if (ptr == &num.character_8_bit.a)
+           {
+               flag = TRUE;
+           }
+           character_count++;
+        
+    }
+
+   while (ptr != &num.character_8_bit.a)
+   {
+       *ptr = '#';
+       ptr--;
+       if (ptr == &num.character_8_bit.a)
+       {
+           *ptr = '#';
+            EEPROM_write(&num.word_32_bit,word_count*4,4);
+             word_count++;
+            
+       }
+
+   }
+   /* last word that remarks the end of the string ########*/
+   uint32 endOfString= 0x23232323;
+   EEPROM_write(&endOfString,word_count*4,4);
+   return word_count;
+}
+
 
