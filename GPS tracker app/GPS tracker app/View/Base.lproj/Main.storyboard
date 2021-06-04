@@ -23,18 +23,18 @@
                                 <rect key="frame" x="10" y="108" width="394" height="768"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Distance: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zv2-Y9-RGj">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="36"/>
                                         <color key="backgroundColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.38221204279999998" green="0.6248134971" blue="0.7914108634" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" red="0.330647409" green="0.6533840299" blue="0.77889460330000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C2c-KZ-E5H">
-                                        <rect key="frame" x="0.0" y="51.5" width="394" height="50"/>
+                                        <rect key="frame" x="0.0" y="48" width="394" height="53.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEO-DD-yUj">
-                                                <rect key="frame" x="0.0" y="6" width="394" height="38"/>
+                                                <rect key="frame" x="0.0" y="8" width="394" height="38"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Reload">
@@ -108,6 +108,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="distanceLabel" destination="zv2-Y9-RGj" id="eOL-OJ-9Hn"/>
                         <outlet property="mapView" destination="Ims-w1-OBw" id="v1d-la-XJz"/>
                         <outlet property="reloadButton" destination="aEO-DD-yUj" id="kMH-K1-4ty"/>
                         <outlet property="saveButton" destination="CtC-gW-jTJ" id="aco-ZU-oxU"/>

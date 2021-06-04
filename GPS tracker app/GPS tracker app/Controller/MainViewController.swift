@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var showGPSReadingsButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,9 +110,17 @@ class MainViewController: UIViewController {
         }
     }
     
-    func calculateDistance() -> Double {
+    func calculateDistance() {
         // MARK:- Implement distance calculator function
-        return 0.0
+        DispatchQueue.main.async {
+            if let safeSource = self.sourceCoordinates, let safeDestination = self.destinationCoordinates {
+                let sourceLocation = CLLocation(latitude: safeSource.latitude, longitude: safeSource.longitude)
+                let destinationLocation = CLLocation(latitude: safeDestination.latitude, longitude: safeDestination.longitude)
+                self.distance = sourceLocation.distance(from: destinationLocation)
+                let distanceStr = String(format: "%.3f", self.distance)
+                self.distanceLabel.text = (" Distance: \(distanceStr) m.")
+            }
+        }
     }
     func drawTrajectory() {
         DispatchQueue.main.async {
@@ -130,8 +139,10 @@ class MainViewController: UIViewController {
                 if let safeMapView = self.mapView {
                     let annotations = safeMapView.annotations
                     safeMapView.removeAnnotations(annotations)
+                    self.calculateDistance()
                     safeMapView.addAnnotation(sourceAnotation)
                     safeMapView.addAnnotation(destinationAnotation)
+                    
                 }
                 
                 
@@ -164,7 +175,7 @@ class MainViewController: UIViewController {
             dismiss(animated: true){ () -> Void in
                 self.present(alert, animated: true, completion: nil)}
         } else {
-            coreDataManager.insert(sourceLatitude: currentTrajectory.first!.latitude, sourceLongitude: currentTrajectory.first!.longitude, destinationLatitude: currentTrajectory.last!.latitude, destinationLongitude: currentTrajectory.last!.longitude, distance: calculateDistance())
+            coreDataManager.insert(sourceLatitude: currentTrajectory.first!.latitude, sourceLongitude: currentTrajectory.first!.longitude, destinationLatitude: currentTrajectory.last!.latitude, destinationLongitude: currentTrajectory.last!.longitude, distance: distance)
         }
     }
 }
@@ -176,6 +187,14 @@ extension MainViewController : MKMapViewDelegate {
         rendere.strokeColor = .systemBlue
         
         return rendere
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        if annotation.title == "Source" {
+                    annotationView.pinTintColor = UIColor.green
+                    return annotationView
+        }
+        return annotationView
     }
 }
 

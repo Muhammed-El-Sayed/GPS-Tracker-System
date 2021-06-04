@@ -13,12 +13,12 @@ struct GPSData: Decodable{
 }
 
 struct Channel: Decodable{
-    let latitude: String
-    let longitude: String
+    let latitude: String?
+    let longitude: String?
 }
 
 struct Feed: Decodable {
-    let entry_id: Int
-    let field1: String
-    let field2: String
+    let entry_id: Int?
+    let field1: Double // Longitude
+    let field2: Double // Latitude
 }
