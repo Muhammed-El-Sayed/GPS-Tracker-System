@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9C72D1FA-716E-4458-A0B9-5AE783FED226"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C456970-7365-48CB-855A-24FE64ECED48"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/View/TestViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "TestViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "3C456970-7365-48CB-855A-24FE64ECED48 - b9039966d21d93b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.__ivar_destroyer"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "3C456970-7365-48CB-855A-24FE64ECED48 - 96ba162745e2558c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.__deallocating_deinit"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "3C456970-7365-48CB-855A-24FE64ECED48 - b66c0c0f4a0492d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GPS_tracker_app.TestViewController"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "3C456970-7365-48CB-855A-24FE64ECED48 - 1f9cc287a6bd870d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GPS_tracker_app.TestViewController"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "290">
+               </Location>
+               <Location
+                  uuid = "3C456970-7365-48CB-855A-24FE64ECED48 - ffd6691642ce42e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GPS_tracker_app.TestViewController&gt;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "3C456970-7365-48CB-855A-24FE64ECED48 - 9358407cb22fc751"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GPS_tracker_app.TestViewController&gt;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "231">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82B9A977-C859-49AD-9835-2F648E57F608"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/View/TestViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17C4C987-9248-495F-A017-A2A48220CEC2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/View/TestViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "TestViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "17C4C987-9248-495F-A017-A2A48220CEC2 - 9f20a03b7651cbb0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.gpsManager.getter : Swift.Optional&lt;GPS_tracker_app.GPSServiceManager&gt;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "91">
+               </Location>
+               <Location
+                  uuid = "17C4C987-9248-495F-A017-A2A48220CEC2 - ee2e9c0e054a744c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.gpsManager.setter : Swift.Optional&lt;GPS_tracker_app.GPSServiceManager&gt;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "167">
+               </Location>
+               <Location
+                  uuid = "17C4C987-9248-495F-A017-A2A48220CEC2 - 5dc4f77d5bb5733"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.gpsManager.modify : Swift.Optional&lt;GPS_tracker_app.GPSServiceManager&gt;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "17C4C987-9248-495F-A017-A2A48220CEC2 - f0b764880e61d31e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.gpsManager.modify : Swift.Optional&lt;GPS_tracker_app.GPSServiceManager&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "17C4C987-9248-495F-A017-A2A48220CEC2 - 1f9cc287a6bd870d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GPS_tracker_app.TestViewController"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "290">
+               </Location>
+               <Location
+                  uuid = "17C4C987-9248-495F-A017-A2A48220CEC2 - 9358407cb22fc751"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GPS_tracker_app.TestViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GPS_tracker_app.TestViewController&gt;"
+                  moduleName = "GPS tracker app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohamedkhalid/College/%D8%AA%D8%A7%D9%84%D8%AA%D9%87%20%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20/%D8%A7%D9%84%D8%AA%D8%B1%D9%85%20%D8%A7%D9%84%D8%AA%D8%A7%D9%86%D9%8A/Microprocessor/Project/GPS-Tracker-System/GPS%20tracker%20app/GPS%20tracker%20app/View/TestViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "231">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE13AB38-C1E4-4F45-A886-FE52E37D4418"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/Model/CoreDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "insert(sourceLatitude:sourceLongitude:destinationLatitude:destinationLongitude:distance:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D95F13E-0146-4635-8163-1938DF088981"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/View/SavedTrajectoriesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1364E5D-2A41-4D68-9365-45FDA7EEFC91"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/View/SavedTrajectoriesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "SavedTrajectoriesViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0CC60CFF-E3E8-4988-9609-73999F5EC17A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/Controller/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "didUpdatePossition(_:possitions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1687815-4FB2-4EFC-9F4F-773A8B1A5ED5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/Controller/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BAA0625D-F869-4B43-82D7-E9360D0079AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/Controller/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "drawTrajectory()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85471D2D-F1FF-4DC6-9D02-1BB8EB2E9CAA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GPS tracker app/Controller/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "drawTrajectory()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

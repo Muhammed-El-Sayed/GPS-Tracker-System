@@ -7,25 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9600F7BD266960BE00B3E151 /* PossitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600F7BC266960BE00B3E151 /* PossitionTableViewCell.swift */; };
+		9600F7CD2669696A00B3E151 /* SavedTrajectoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9600F7CC2669696A00B3E151 /* SavedTrajectoriesViewController.swift */; };
 		96E251AF26680F1500698977 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251AE26680F1500698977 /* AppDelegate.swift */; };
 		96E251B126680F1500698977 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251B026680F1500698977 /* SceneDelegate.swift */; };
-		96E251B326680F1500698977 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251B226680F1500698977 /* ViewController.swift */; };
+		96E251B326680F1500698977 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251B226680F1500698977 /* MainViewController.swift */; };
 		96E251B626680F1500698977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E251B426680F1500698977 /* Main.storyboard */; };
-		96E251B926680F1500698977 /* GPS_tracker_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96E251B726680F1500698977 /* GPS_tracker_app.xcdatamodeld */; };
+		96E251B926680F1500698977 /* TrajectoriesLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96E251B726680F1500698977 /* TrajectoriesLog.xcdatamodeld */; };
 		96E251BB26680F1900698977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E251BA26680F1900698977 /* Assets.xcassets */; };
 		96E251BE26680F1900698977 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E251BC26680F1900698977 /* LaunchScreen.storyboard */; };
+		96E251F02669379900698977 /* GPSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251EF2669379900698977 /* GPSData.swift */; };
+		96E251F82669385600698977 /* GPSServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251F72669385600698977 /* GPSServiceManager.swift */; };
+		96E251FB26693A8900698977 /* PossitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E251FA26693A8900698977 /* PossitionModel.swift */; };
+		96E25206266958AE00698977 /* PossitionsLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E25205266958AD00698977 /* PossitionsLogViewController.swift */; };
+		96E6B979266983E000334818 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6B978266983E000334818 /* CoreDataService.swift */; };
+		96E6B98326698AE200334818 /* SavedTrajectoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6B98226698AE200334818 /* SavedTrajectoriesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9600F7BC266960BE00B3E151 /* PossitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossitionTableViewCell.swift; sourceTree = "<group>"; };
+		9600F7CC2669696A00B3E151 /* SavedTrajectoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedTrajectoriesViewController.swift; path = ../View/SavedTrajectoriesViewController.swift; sourceTree = "<group>"; };
 		96E251AB26680F1500698977 /* GPS tracker app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS tracker app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E251AE26680F1500698977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E251B026680F1500698977 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		96E251B226680F1500698977 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		96E251B226680F1500698977 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		96E251B526680F1500698977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96E251B826680F1500698977 /* GPS_tracker_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPS_tracker_app.xcdatamodel; sourceTree = "<group>"; };
 		96E251BA26680F1900698977 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96E251BD26680F1900698977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96E251BF26680F1900698977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96E251EF2669379900698977 /* GPSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSData.swift; sourceTree = "<group>"; };
+		96E251F72669385600698977 /* GPSServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSServiceManager.swift; sourceTree = "<group>"; };
+		96E251FA26693A8900698977 /* PossitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossitionModel.swift; sourceTree = "<group>"; };
+		96E25205266958AD00698977 /* PossitionsLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossitionsLogViewController.swift; sourceTree = "<group>"; };
+		96E6B978266983E000334818 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		96E6B98226698AE200334818 /* SavedTrajectoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTrajectoriesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +76,46 @@
 			children = (
 				96E251AE26680F1500698977 /* AppDelegate.swift */,
 				96E251B026680F1500698977 /* SceneDelegate.swift */,
-				96E251B226680F1500698977 /* ViewController.swift */,
-				96E251B426680F1500698977 /* Main.storyboard */,
+				96E251F2266937A200698977 /* Model */,
+				96E251EB2668118900698977 /* View */,
+				96E2520926695B3C00698977 /* Controller */,
 				96E251BA26680F1900698977 /* Assets.xcassets */,
-				96E251BC26680F1900698977 /* LaunchScreen.storyboard */,
 				96E251BF26680F1900698977 /* Info.plist */,
-				96E251B726680F1500698977 /* GPS_tracker_app.xcdatamodeld */,
 			);
 			path = "GPS tracker app";
+			sourceTree = "<group>";
+		};
+		96E251EB2668118900698977 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				96E251B426680F1500698977 /* Main.storyboard */,
+				96E251BC26680F1900698977 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		96E251F2266937A200698977 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96E251EF2669379900698977 /* GPSData.swift */,
+				96E251F72669385600698977 /* GPSServiceManager.swift */,
+				96E251FA26693A8900698977 /* PossitionModel.swift */,
+				96E251B726680F1500698977 /* TrajectoriesLog.xcdatamodeld */,
+				96E6B978266983E000334818 /* CoreDataService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96E2520926695B3C00698977 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				96E251B226680F1500698977 /* MainViewController.swift */,
+				96E25205266958AD00698977 /* PossitionsLogViewController.swift */,
+				9600F7BC266960BE00B3E151 /* PossitionTableViewCell.swift */,
+				9600F7CC2669696A00B3E151 /* SavedTrajectoriesViewController.swift */,
+				96E6B98226698AE200334818 /* SavedTrajectoriesTableViewCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96E251B326680F1500698977 /* ViewController.swift in Sources */,
-				96E251B926680F1500698977 /* GPS_tracker_app.xcdatamodeld in Sources */,
+				96E251B326680F1500698977 /* MainViewController.swift in Sources */,
+				96E251F02669379900698977 /* GPSData.swift in Sources */,
+				96E251FB26693A8900698977 /* PossitionModel.swift in Sources */,
+				96E25206266958AE00698977 /* PossitionsLogViewController.swift in Sources */,
+				96E251F82669385600698977 /* GPSServiceManager.swift in Sources */,
+				9600F7CD2669696A00B3E151 /* SavedTrajectoriesViewController.swift in Sources */,
+				96E251B926680F1500698977 /* TrajectoriesLog.xcdatamodeld in Sources */,
 				96E251AF26680F1500698977 /* AppDelegate.swift in Sources */,
+				96E6B98326698AE200334818 /* SavedTrajectoriesTableViewCell.swift in Sources */,
+				96E6B979266983E000334818 /* CoreDataService.swift in Sources */,
+				9600F7BD266960BE00B3E151 /* PossitionTableViewCell.swift in Sources */,
 				96E251B126680F1500698977 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,13 +403,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		96E251B726680F1500698977 /* GPS_tracker_app.xcdatamodeld */ = {
+		96E251B726680F1500698977 /* TrajectoriesLog.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				96E251B826680F1500698977 /* GPS_tracker_app.xcdatamodel */,
 			);
 			currentVersion = 96E251B826680F1500698977 /* GPS_tracker_app.xcdatamodel */;
-			path = GPS_tracker_app.xcdatamodeld;
+			path = TrajectoriesLog.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
