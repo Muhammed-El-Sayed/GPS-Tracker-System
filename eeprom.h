@@ -61,6 +61,6 @@ boolean EEPROM_Init(void);
 uint32 EEPROM_getSize(void);
 void EEPROM_read( uint32* saveLocation, uint32 startAddress, uint32 count);
 void EEPROM_write( uint32* writeLocation, uint32 startAddress, uint32 count);
-uint32 EEPROM_writeBytes(uint8* str);
+uint32 EEPROM_writeBytes(uint8* str,uint32 startAddress);
 
 #endif
