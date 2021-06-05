@@ -74,3 +74,15 @@ void SysTick_Delay_ms(uint16 delay)
     SYSTICK_CTRL_REG   |= 0x05;
     while((SYSTICK_CTRL_REG & 0x00010000) == 0); /* wait for the systictimer to finish count and raise the count flag*/
 }
+
+//fucntion to make delay in seconds 
+void SysTick_Delay_sec(uint16 delay)
+{
+    for(uint8 i = 0 ; i < delay ; i++)
+    {
+        SysTick_Delay_ms(1048);   
+    }
+}
+
+
+
