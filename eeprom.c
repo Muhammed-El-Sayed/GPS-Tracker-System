@@ -137,14 +137,14 @@ void EEPROM_write( uint32* writeLocation, uint32 startAddress, uint32 count)
    		}
    	}
 }
-uint32 EEPROM_writeBytes(uint8* str)
+uint32 EEPROM_writeBytes(uint8* str,uint32 startAddress)
 {
     REG num;
     char* ptr = &num.character_8_bit.d;
     int character_count = 0;
-    int word_count = 0;
+    int word_count = startAddress;
     boolean flag = FALSE;
-   
+  
     
    while (str[character_count]!='\0')
     {
@@ -179,9 +179,9 @@ uint32 EEPROM_writeBytes(uint8* str)
 
    }
    /* last word that remarks the end of the string ########*/
-   uint32 endOfString= 0x23232323;
+  uint32 endOfString= 0x23232323;
    EEPROM_write(&endOfString,word_count*4,4);
+   word_count++;
    return word_count;
 }
-
 
