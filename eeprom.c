@@ -179,9 +179,9 @@ uint32 EEPROM_writeBytes(uint8* str,uint32 startAddress)
 
    }
    /* last word that remarks the end of the string ########*/
-  uint32 endOfString= 0x23232323;
-   EEPROM_write(&endOfString,word_count*4,4);
-   word_count++;
+  //uint32 endOfString= 0x23232323;
+  // EEPROM_write(&endOfString,word_count*4,4);
+   //word_count++;
    return word_count;
 }
 
