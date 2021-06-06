@@ -6,7 +6,6 @@
  *
  * Description: Source file for TM4C123GH6PM Microcontroller - SysTick Timer Driver.
  *
- * Author: Salma Ali
  ******************************************************************************/
 #include "SystickTimer.h"
 #include "SystickTimer_Regs.h"
@@ -18,6 +17,17 @@
 
 /* Global pointer to function used to point upper layer functions
  * to be used in Call Back */
+
+/************************************************************************************
+* Service Name: Return_Latitude_Direction
+* Parameters (in): buffer
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: None
+* Description: Function to Setup the SysTick Timer configuration to count n miliseconds:
+*              - Set the Reload value
+*              - Enable SysTick Timer with System clock 16Mhz
+*              - Enable SysTick Timer Interrupt and set its priority
 static void (*g_SysTick_Call_Back_Ptr)(void) = NULL_PTR;
 
 /************************************************************************************
