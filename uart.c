@@ -3,6 +3,7 @@
 /*Global variable*/
 static  void (*g_UART_2_RX_callBackPtr)(void) = NULL_PTR;
 static  void (*g_UART_0_RX_callBackPtr)(void) = NULL_PTR;
+static  void (*g_UART_3_RX_callBackPtr)(void) = NULL_PTR;
 
 void UART_2_RX_ISR(void) 
 {
@@ -12,6 +13,18 @@ void UART_2_RX_ISR(void)
 	{
            /* Call the Call Back function in the application after the edge is detected */
 	(*g_UART_2_RX_callBackPtr)(); /* another method to call the function using pointer to function g_callBackPtr(); */
+	}
+  
+}
+
+void UART_3_RX_ISR(void) 
+{
+      CLEAR_BIT (*(volatile uint32 *)((volatile uint8 *)UART3_BASE_ADDRESS + UARTICR_OFFSET),RXIC); //Clear recieve Interrupt
+      
+      if(g_UART_3_RX_callBackPtr != NULL_PTR)
+	{
+           /* Call the Call Back function in the application after the edge is detected */
+	(*g_UART_3_RX_callBackPtr)(); /* another method to call the function using pointer to function g_callBackPtr(); */
 	}
   
 }
@@ -34,6 +47,12 @@ void UART_2_RX_setCallBack(void(*a_ptr)(void))
 	g_UART_2_RX_callBackPtr = a_ptr;
 }
 
+void UART_3_RX_setCallBack(void(*a_ptr)(void))
+{
+	/* Save the address of the Call back function in a global variable */
+	g_UART_3_RX_callBackPtr = a_ptr;
+}
+
 void UART_0_RX_setCallBack(void(*a_ptr)(void))
 {
 	/* Save the address of the Call back function in a global variable */
@@ -46,6 +65,14 @@ void Enable_UART_2_RX_INTERRUPT(void)
    Enable_Interrupts();      //Enable Global Interrupt enable
    SET_BIT(*(volatile uint32 *)((volatile uint8 *)UART2_BASE_ADDRESS + UARTIM_OFFSET),RXIM); //Enable UART 2 interrupt Module
    SET_BIT(NVIC_EN1_REG,1); //Enable UART 2 interrupt in NVIC Registers
+}
+
+void Enable_UART_3_RX_INTERRUPT(void)
+{
+   CLEAR_BIT (*(volatile uint32 *)((volatile uint8 *)UART3_BASE_ADDRESS + UARTICR_OFFSET),RXIC); //Clear recieve Interrupt
+   Enable_Interrupts();      //Enable Global Interrupt enable
+   SET_BIT(*(volatile uint32 *)((volatile uint8 *)UART3_BASE_ADDRESS + UARTIM_OFFSET),RXIM); //Enable UART 3 interrupt Module
+   SET_BIT(NVIC_EN1_REG,27); //Enable UART 3 interrupt in NVIC Registers
 }
 
 void Enable_UART_0_RX_INTERRUPT(void)
@@ -308,3 +335,4 @@ void UART_receiveLon(uint8 *Str , uint16 UART_Mode) //The Global variable value 
 	}
 	Str[i] = '\0';
 }
+
