@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
-const char* ssid = "WE_EA58F4";    // name of your wifi network!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-const char* password = "jbv10284";     // wifi pasword !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const char* ssid = "OPPO F11";    // name of your wifi network!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const char* password = "11111111";     // wifi pasword !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 const char* host = "script.google.com";
 const int httpsPort = 443;
 
@@ -59,6 +59,7 @@ void loop()
     //  latitude =  latitude / 100000;
           flag = 1;
         latitude_flag=0;
+        delay(6000);
          if(longitude_flag==1 && latitude_flag==0)
          {
           sendData(string_longitude,string_latitude );
