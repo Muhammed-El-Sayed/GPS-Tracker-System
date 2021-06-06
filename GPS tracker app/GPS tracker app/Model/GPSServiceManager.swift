@@ -15,7 +15,7 @@ protocol GPSServiceManagerDelegate {
 struct GPSServiceManager {
     static let shared = GPSServiceManager()
 
-    let GPSDataURL = "https://script.googleusercontent.com/macros/echo?user_content_key=a9NRuyPyA2FyvatIs84L_isj7CuQE7eaSnS3F_HQKb8pkan-b98vr4q2hFqamvkBPnIJ4tUUAKpe6X-o3wW_y9o3aN_6rO8fm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnHFjDCwzSB4Px5ZkrLeZl-Uge2ZAneyelEWd5FoID2_bwr3T-Ja00N9qCxOpr9FwPFQDMoY5k8guXJIRhmMHxXrl0-G--jLB-A&lib=MAw8bVJEpNq-d9upNF_u8AZXv_sM7Qa-L"
+    let GPSDataURL = "https://script.google.com/macros/s/AKfycbwrmYOW72cwi7itiC39mY6CnsF8IXkTyUyQwZf9Ob8V7K7-FZxRKGaRNeIzMfIl7_iY/exec"
     var delegate: GPSServiceManagerDelegate?
     
     func fetchPossitions() {
