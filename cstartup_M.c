@@ -23,7 +23,9 @@ extern void SVC_Handler( void );
 extern void DebugMon_Handler( void );
 extern void PendSV_Handler( void );
 extern void SysTick_Handler( void );
+extern void UART_0_RX_ISR(void);
 extern void UART_2_RX_ISR(void);
+extern void UART_3_RX_ISR(void);
 
 
 typedef void( *intfunc )( void );
@@ -64,13 +66,13 @@ const intvec_elem __vector_table[] =
   0,
   0,
   0,
+  UART_0_RX_ISR, //21
   0,
   0,
   0,
   0,
-  0,
-  0,
-  0,
+  0,  
+  0, 
   0,
   0,
   0,
@@ -118,7 +120,7 @@ const intvec_elem __vector_table[] =
   0,
   0,
   0,
-  0,
+  UART_3_RX_ISR, //75
   0,
   0,
   0,
