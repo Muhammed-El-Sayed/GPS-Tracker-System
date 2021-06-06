@@ -1,3 +1,14 @@
+ /******************************************************************************
+ *
+ * Module: uart
+ *
+ * File Name:  uart.c
+ *
+ * Description: Source file for uart.
+ *
+ ******************************************************************************/
+
+
 #include "uart.h"
 
 /*Global variable*/
@@ -5,6 +16,10 @@ static  void (*g_UART_2_RX_callBackPtr)(void) = NULL_PTR;
 static  void (*g_UART_0_RX_callBackPtr)(void) = NULL_PTR;
 static  void (*g_UART_3_RX_callBackPtr)(void) = NULL_PTR;
 
+
+/***************************************************************************************************/
+*                            /*Interrupt Handlers*/
+/***************************************************************************************************/
 void UART_2_RX_ISR(void) 
 {
       CLEAR_BIT (*(volatile uint32 *)((volatile uint8 *)UART2_BASE_ADDRESS + UARTICR_OFFSET),RXIC); //Clear recieve Interrupt
@@ -40,6 +55,10 @@ void UART_0_RX_ISR(void)
 	}
   
 }
+
+/******************************************************************************************************/
+/*************************************** call back functions  *****************************************/
+/******************************************************************************************************/
 
 void UART_2_RX_setCallBack(void(*a_ptr)(void))
 {
@@ -84,14 +103,23 @@ void Enable_UART_0_RX_INTERRUPT(void)
 }
 
 
+/************************************************************************************
+* Service Name: UART_Init
+* Parameters (in):  UART_configuration 
+* Parameters (inout): None
+* Parameters (out): None 
+* Return value: None
+* Description: Function to initialize UART driver
+* Notes:
 /*
-
  (((ConfigPtr->UART_Mode)&(0x0F00))>>8)          --> UART Number(0 or 1 or 2  or 4 or 5 or 6 or 7)
     (((ConfigPtr->UART_Mode)&(0x00F0))>>4)       --> PORT Symbol (A or B or C or D or E or F) 
        ((ConfigPtr->UART_Mode)&(0x000F))         -->PIN(0 or 1 or 2 or 3 or 4 or 5 or 6 or 7)
         (((ConfigPtr->UART_Mode)&(0xF000))>>12)  -->E:Recieve or -->C:Send
          ((ConfigPtr->UART_Mode)&(0x00FF))       -->PORT PIN(A0 or A1 or B0 or B1 or C4 or C5 or D6 or D7 or C6 or C7 or C4 or C5 or E4 or E5 or D4 or D5 or E0 or E1)
-*/
+
+************************************************************************************/
+
 void UART_Init( const UART_Config * ConfigPtr)
 {
     volatile uint32 * PortGpio_Ptr = NULL_PTR; /* point to the required Port Registers base address */
@@ -225,6 +253,16 @@ void UART_Init( const UART_Config * ConfigPtr)
     
 }
 
+
+
+/************************************************************************************
+* Service Name: UART_Send_Byte
+* Parameters (in): data , UART_Mode
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: None
+* Description: Function to send Byte through uart
+************************************************************************************/
 void UART_Send_Byte(uint8 data , uint16 UART_Mode)
 {
   volatile uint32 * UART_Ptr = NULL_PTR;     /* point to the required UART Registers base address */
@@ -257,6 +295,15 @@ void UART_Send_Byte(uint8 data , uint16 UART_Mode)
   
 }
 
+
+/************************************************************************************
+* Service Name: UART_Recieve_Byte
+* Parameters (in): \ UART_Mode
+* Parameters (inout): None
+* Parameters (out): data recevied
+* Return value: None
+* Description: Function to recevie Byte through uart
+************************************************************************************/
 uint8 UART_Recieve_Byte(uint16 UART_Mode)
 {
     volatile uint32 * UART_Ptr = NULL_PTR;     /* point to the required UART Registers base address */
