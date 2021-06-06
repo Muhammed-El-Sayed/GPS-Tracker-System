@@ -12,6 +12,15 @@
 #include "eeprom_Regs.h"
 #include "SystickTimer.h"
 
+
+/************************************************************************************
+* Service Name: EEPROM_Init
+* Parameters (in):None
+* Parameters (inout): None
+* Parameters (out): None 
+* Return value: None
+* Description: Function to initialize EEPROM driver
+************************************************************************************/
 boolean EEPROM_Init(void)
 {
      //  EEPROM_DONE_STATUS_REGISTER = 0x0;
@@ -38,12 +47,22 @@ uint32 EEPROM_getSize(void)
 	return (SIZE_OF_EEPROM_IN_BYTES_FROM_EESIZE(EEPROM_SIZE_INFORMATION));
 }
 
-/* 
+
+
+
+/************************************************************************************
+* Service Name: EEPROM_read
+* Parameters (in):saveLocation , startAddress, count
+* Parameters (inout): None
+* Parameters (out): None 
+* Return value: None
+* Description: Function to read from EEPROM
+* Notes:
 * Reads "Count" bytes from  "startAddress" word offset and saves the data starting from location "saveLocation" 
 * Note: Memory is word addressing, but the user should send the address of byte, so it should be multible of 4 (word alligned)
 * startAddress: not an actual address, it's an "offset" multiple of 4
 * count: no.of bytes
-*/
+************************************************************************************/
 void EEPROM_read( uint32* saveLocation, uint32 startAddress, uint32 count)
 {
 	// Ensures that the address is > 0  --> Not sure why
@@ -82,7 +101,14 @@ void EEPROM_read( uint32* saveLocation, uint32 startAddress, uint32 count)
    	}
 }
 
-
+/************************************************************************************
+* Service Name: EEPROM_write
+* Parameters (in): writeLocation, startAddress, count
+* Parameters (inout): None
+* Parameters (out): None 
+* Return value: None
+* Description: Function to write in EEPORM 
+************************************************************************************/
 void EEPROM_write( uint32* writeLocation, uint32 startAddress, uint32 count) 
 {
 	// Ensures that the address is > 0  --> Not sure why
@@ -137,6 +163,16 @@ void EEPROM_write( uint32* writeLocation, uint32 startAddress, uint32 count)
    		}
    	}
 }
+
+
+/************************************************************************************
+* Service Name: EEPROM_writeBytes
+* Parameters (in): startAddress, str
+* Parameters (inout): None
+* Parameters (out): None 
+* Return value: None
+* Description: Function to write arrays in EEPORM 
+************************************************************************************/
 uint32 EEPROM_writeBytes(uint8* str,uint32 startAddress)
 {
     REG num;
