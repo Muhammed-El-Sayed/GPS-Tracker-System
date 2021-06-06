@@ -52,6 +52,7 @@ extension SavedTrajectoriesViewController: UITableViewDelegate, UITableViewDataS
                 safeCell.destinationLongitudeLabel.text = ("     Longitude: \(safeSaveData[indexPath.row].destinationLongitude)")
                 safeCell.sourceLatitudeLabel.text = String("     Latitude: \(safeSaveData[indexPath.row].sourceLatitude)")
                 safeCell.sourceLongitudeLabel.text = ("     Longitude: \(String(safeSaveData[indexPath.row].sourceLongitude))")
+                safeCell.distanceLabel.text = ("     Distance: \(String(safeSaveData[indexPath.row].distance))")
                 return safeCell
             }
         }

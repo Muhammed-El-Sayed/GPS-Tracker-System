@@ -166,6 +166,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        calculateDistance()
         print("Count in current trajectory = \(currentTrajectory.count)")
         if(currentTrajectory.count < 2) {
             print("ALEEEERT saving")
