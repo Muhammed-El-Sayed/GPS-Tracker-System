@@ -59,7 +59,6 @@ void loop()
     //  latitude =  latitude / 100000;
           flag = 1;
         latitude_flag=0;
-        delay(6000);
          if(longitude_flag==1 && latitude_flag==0)
          {
           sendData(string_longitude,string_latitude );
@@ -93,7 +92,7 @@ void sendData(String longtiude, String latitude )
   }
     String str_long =  longtiude; 
    String str_lat =  latitude; 
-  String url = "/macros/s/" + GAS_ID + "/exec?field1=" + str_long + "&field2=" + str_lat;
+  String url = "/macros/s/" + GAS_ID + "/exec?field1=" + str_lat + "&field2=" +str_long;
   Serial.print("requesting URL: ");
   Serial.println(url);
 
