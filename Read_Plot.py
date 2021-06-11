@@ -1,15 +1,35 @@
-
 # import gmplot package
 import gmplot
 
 longitude_list_test = []
 latitude_list_test = []
 file = open("hello.txt","r")
-for line in file :
-    fiels = line.split(",")    #15.46512,13.46162 ##
-    longitude_list_test.append(fiels[0])
-    x = fiels[1].split(" ")
-    latitude_list_test.append(x[0])
+
+full_reading = ""
+flag = 0
+for line in file:
+    for char in line:
+        if (char >= '0' and char <= '9' or char == '.' or char == ',' or char == '#' or char == ' ' and flag == 0 ):
+            if char != '#':
+                full_reading += char
+            if char == ' ':
+                reading = full_reading.split(",")
+                longitude_list_test.append(reading[0])
+                print(reading[0])
+                latitude_list_test.append(reading[1])
+                print(reading[1])
+                full_reading = ""
+        else:
+            flag = 1
+            if(char == ' '):
+                flag = 0
+                full_reading = ""
+
+#for line in file :
+ #   fiels = line.split(",")    #15.46512,13.46162 ##
+  #  longitude_list_test.append(fiels[0])
+   # x = fiels[1].split(" ")
+    #latitude_list_test.append(x[0])
 
 print(longitude_list_test)
 print(latitude_list_test)
