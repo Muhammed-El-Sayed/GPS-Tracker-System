@@ -31,7 +31,6 @@ uint8 lon[13] ={'\0'};
   uint32 wordCount =0;
   
 
-
 /*Application Handler on recieving UART2 a byte*/
 void Latitude_Longitude_String_Recieved (void) //fills buffer by the recieved GPGGA data & sets stringRecieved flag after recieving GPGGA full info.
 {
@@ -68,7 +67,7 @@ void PC_To_Uart_Read_EEPROM(void)  // c6 Recieve Pin  ,  c5 Send Pin  Pc to UART
     int count=0;  
     REG num2;
     
-     EEPROM_read(&wordCount,508,4);
+    EEPROM_read(&wordCount,508,4);
     
   while(count < wordCount)
  {
@@ -81,28 +80,31 @@ void PC_To_Uart_Read_EEPROM(void)  // c6 Recieve Pin  ,  c5 Send Pin  Pc to UART
  }
   
    }
+
       
 }
  
    //   Application Code
 int main()
 {  
+
+
   
   Port_Init(&Port_Configuration);
   Dio_Init(&Dio_Configuration);
   LCD_init();
+
   EEPROM_Init();
 
-  UART_Config Configuration3 ={UART_4_TX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
+ 
+  UART_Config Configuration3 ={UART_4_TX,DATA_LENGTH_8_BITS,ONE_STOP_BIT}; 
   UART_Init(&Configuration3);
   UART_Config Configuration4 ={UART_5_TX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
   UART_Init(&Configuration4);
-  UART_Config Configuration1 ={UART_2_TX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
-  UART_Init(&Configuration1); 
   UART_Config Configuration2 ={UART_3_RX,DATA_LENGTH_8_BITS,ONE_STOP_BIT};
   UART_Init(&Configuration2);
-  Enable_UART_3_RX_INTERRUPT();
-  UART_3_RX_setCallBack(PC_To_Uart_Read_EEPROM);
+  //Enable_UART_3_RX_INTERRUPT();
+  //UART_3_RX_setCallBack(PC_To_Uart_Read_EEPROM);
   
   
   
@@ -115,11 +117,13 @@ int main()
   
   //These local data are used to store the previous latitude & longitude
   uint8 flag =0;
-  float64 lat1,lon1;
+  float64 lat1,lon1;    //eeprom
+  float64 lat11,lon11;   //wifi
       
     
   while(1)
   {
+    
     
     if(stringRecieved == 1) //GPGGA data is recieved
     {
@@ -190,39 +194,65 @@ int main()
 	  i++;
 	}    
         str_info[i]=' ';
-	      
-	    
-       
-    	  //send to wifi  --> 'lat,lon ' string after conversion
-    	 // D7 will send to wif
- 	  UART_sendString(str_info,UART_2_TX);
+	     
 
-
+        
       
-       //calculating Distance 
+
+       //calculating Distance FVC
       //Initializing lat1 with the first latitude & lon1 with the first longitude
       if(flag == 0)
       { 
 	flag =1;
 	lat1 =lat_In_Degrees;
 	lon1 =lon_In_Degrees;
+        
+        lat11 = lat_In_Degrees;
+        lon11 = lon_In_Degrees;
+
+          wordCount = EEPROM_writeBytes(str_info,wordCount);
+        
+          //send to wifi  --> 'lat,lon ' string after conversion
+    	 // D7 will send to wifi
+         
+ 	  UART_sendString(str_info,UART_5_TX);
       }
 	 //Calibration
-	      //write in eeprom
-      if(calculate_Distance_between_2_Coordinates(lat1,lon1,lat_In_Degrees,lon_In_Degrees) >= 0.0005 )
-      { wordCount = EEPROM_writeBytes(str_info,wordCount);
       
+      
+       //write in eeprom
+      if(calculate_Distance_between_2_Coordinates(lat1,lon1,lat_In_Degrees,lon_In_Degrees) >= 0.0005 )
+      { 
+        wordCount = EEPROM_writeBytes(str_info,wordCount);
+        
       
        //lat_In_Degrees is the new latitude (lat2) & lon_In_Degrees is the new longitude (lon2)
-     //lon_In_Degrees if( (lat1 != lat_In_Degrees)  || (lon1 != lon_In_Degrees) )
+      //lon_In_Degrees if( (lat1 != lat_In_Degrees)  || (lon1 != lon_In_Degrees) )
        Distance += calculate_Distance_between_2_Coordinates(lat1,lon1,lat_In_Degrees,lon_In_Degrees);
-      }
-      
-     
-       //Storing previous latitude & longitude
+       
+        //Storing previous latitude & longitude
        lat1=lat_In_Degrees;
        lon1=lon_In_Degrees;
        
+      }
+      
+      //write in wifi
+      if(calculate_Distance_between_2_Coordinates(lat11,lon11,lat_In_Degrees,lon_In_Degrees) >= 0.005 )
+      { 
+       
+        
+          //send to wifi  --> 'lat,lon ' string after conversion
+    	 // D7 will send to wifi
+         
+ 	  UART_sendString(str_info,UART_5_TX);
+       
+        //Storing previous latitude & longitude
+       lat11=lat_In_Degrees;
+       lon11=lon_In_Degrees;
+       
+      }
+     
+
        //Display Distance
        LCD_goToRowColoumn(1,0);
        LCD_displayString("Dis: ");
@@ -238,6 +268,9 @@ int main()
        }
 	SysTick_Delay_ms(250);
        Enable_Interrupts();
+       
+
+
     }
       
  }
@@ -245,7 +278,30 @@ int main()
    
 //MC will stuck in this loop after distance reach 100m so that MC will not receive 
 while(1)
-{}
+{  if( UART_Recieve_Byte(UART_3_RX) == 'U')
+   {
+    //LED_setOn();
+   // UART_sendString("32.4567,22.44567",UART_4_TX);
+    int count=0;  
+    REG num2;
+    
+    EEPROM_read(&wordCount,508,4);
+    
+  while(count < wordCount)
+ {
+   EEPROM_read(& num2.word_32_bit, count*4,4);
+   UART_Send_Byte(num2.character_8_bit.d,UART_4_TX);
+   UART_Send_Byte(num2.character_8_bit.c,UART_4_TX);
+   UART_Send_Byte(num2.character_8_bit.b,UART_4_TX);
+   UART_Send_Byte(num2.character_8_bit.a,UART_4_TX);
+   count++;
+ }
+  
+   }
+}
+
+
+
 
 
 }
