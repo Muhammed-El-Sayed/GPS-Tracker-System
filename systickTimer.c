@@ -28,11 +28,11 @@
 *              - Set the Reload value
 *              - Enable SysTick Timer with System clock 16Mhz
 *              - Enable SysTick Timer Interrupt and set its priority
-static void (*g_SysTick_Call_Back_Ptr)(void) = NULL_PTR;
 
 /************************************************************************************
 * Description: SysTick Timer ISR
 ************************************************************************************/
+static void (*g_SysTick_Call_Back_Ptr)(void) = NULL_PTR;
 void SysTick_Handler(void)
 {
     /* Check if the Timer0_setCallBack is already called */
