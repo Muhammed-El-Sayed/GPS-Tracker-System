@@ -18,7 +18,7 @@ static  void (*g_UART_3_RX_callBackPtr)(void) = NULL_PTR;
 
 
 /***************************************************************************************************/
-*                            /*Interrupt Handlers*/
+                            /*Interrupt Handlers*/
 /***************************************************************************************************/
 void UART_2_RX_ISR(void) 
 {
@@ -214,8 +214,6 @@ void UART_Init( const UART_Config * ConfigPtr)
     break;
     }
    
-   //Flush Transmit FIFO
-   CLEAR_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTLCRH_OFFSET),FEN);
    
    //Write integer portion of BRD to the UARTIBRD register
    *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTIBRD_OFFSET) = UARTIBRD_VALUE;
@@ -225,7 +223,11 @@ void UART_Init( const UART_Config * ConfigPtr)
    
 
    //Clearing UARTLCRH (Initial Value)
-   *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTLCRH_OFFSET) = 0x00000000;
+   //*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTLCRH_OFFSET) = 0x00000000;
+   
+   //Flush Transmit FIFO
+   SET_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTLCRH_OFFSET),FEN);
+   
    //Adjusting Data length as User wanted   
    *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTLCRH_OFFSET) |= ((ConfigPtr->Data_length_bits) << 5);   
    //Adjusting Number of Stop bits as User Wanted (1 or 2)
@@ -235,16 +237,16 @@ void UART_Init( const UART_Config * ConfigPtr)
    *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCC_OFFSET) = 0;
    
    //Clearing UARTCTL (Initial Value)
-    *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET)=0x00000000;
+   // *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET)=0x00000000;
     
    //Enable Transmission or Receive
     switch( (((ConfigPtr->UART_Mode)&(0xF000))>>12) )
     {
     case 0x0C: SET_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET),TXE );
-               CLEAR_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET),RXE );
+               //CLEAR_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET),RXE );
     break;
     case 0x0E: SET_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET),RXE );
-               CLEAR_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET),TXE );
+               //CLEAR_BIT(*(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTCTL_OFFSET),TXE );
     break;
     }
 
@@ -289,7 +291,8 @@ void UART_Send_Byte(uint8 data , uint16 UART_Mode)
    }
    
    while( BIT_IS_SET( *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTFR_OFFSET) ,TXFF) ); /*The Transmitter is Full ,so do nth till it becomes empty*/
-   /*Transmitter is empty and ready to transmit new data*/
+   
+  /*Transmitter is empty and ready to transmit new data*/
   //Transmit data Byte
    *(volatile uint32 *)((volatile uint8 *)UART_Ptr + UARTDR_OFFSET) |= data;
   
